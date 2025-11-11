@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Pokémon + Flask + Azure SQL</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;margin:24px;}
+    table{border-collapse:collapse;width:100%;}
+    th,td{border:1px solid #ddd;padding:8px;}
+    th{background:#f6f6f6;text-align:left;}
+    a{color:#0b5fff;text-decoration:none;}
+    a:hover{text-decoration:underline;}
+  </style>
+</head>
+<body>
+  <p><a href="/">Home</a> · <a href="/pokemon">All Pokémon</a> · <a href="/thunderbolt">Learns Thunderbolt</a></p>
+  {% block content %}{% endblock %}
+</body>
+</html>

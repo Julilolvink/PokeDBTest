@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>All Pokémon</h1>
+<table>
+  <thead>
+    <tr>
+      <th>#</th><th>Name</th><th>Primary</th><th>Secondary</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for r in rows %}
+    <tr>
+      <td>{{ r.PokedexNo }}</td>
+      <td>{{ r.Name }}</td>
+      <td>{{ r.PrimaryType or "" }}</td>
+      <td>{{ r.SecondaryType or "" }}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

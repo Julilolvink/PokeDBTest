@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Pokémon that can learn Thunderbolt</h1>
+<ul>
+  {% for n in names %}
+    <li>{{ n }}</li>
+  {% endfor %}
+</ul>
+{% if not names %}
+<p><em>No results found.</em></p>
+{% endif %}
+{% endblock %}
