@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Comments on Pokémon</h1>
+
+<form method="post" action="{{ url_for('routes.comments') }}" style="margin-bottom: 24px;">
+  <label for="pokemon_id">Pokémon:</label><br>
+  <select name="pokemon_id" id="pokemon_id" required>
+    <option value="" disabled selected>Select a Pokémon</option>
+    {% for p in pokemon %}
+      <option value="{{ p.PokemonID }}">{{ p.PokedexNo }} — {{ p.Name }}</option>
+    {% endfor %}
+  </select>
+  <br><br>
+
+  <label for="username">Your name (displayed):</label><br>
+  <input type="text" id="username" name="username" maxlength="40" required>
+  <br><br>
+
+  <label for="body">Comment:</label><br>
+  <textarea id="body" name="body" rows="4" maxlength="500" required></textarea>
+  <br><br>
+
+  <button type="submit">Post comment</button>
+</form>
+
+{% if ok %}
+  <p style="color: #2b7a0b;">Thanks! Your comment was posted.</p>
+{% elif err %}
+  <p style="color: #b00020;">{{ err }}</p>
+{% endif %}
+
+<h2>Latest comments</h2>
+<table>
+  <thead>
+    <tr>
+      <th>When (UTC)</th><th>Pokémon</th><th>User</th><th>Comment</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for c in comments %}
+    <tr>
+      <td>{{ c.CreatedAt }}</td>
+      <td>{{ c.PokemonName }}</td>
+      <td>{{ c.Username }}</td>
+      <td>{{ c.Body }}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% if not comments %}
+<p><em>No comments yet—be the first!</em></p>
+{% endif %}
+{% endblock %}
